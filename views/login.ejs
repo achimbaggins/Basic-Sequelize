@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <%- include part/css %>
+    <title></title>
+  </head>
+  <body>
+    <center>
+      <h2>Login Page</h2>
+      <% if(pesan){ %>
+        <span style="color:red"><%= pesan %></span>
+      <% } %>
+    </center>
+    <div class="col-md-2 col-md-offset-5">
+      <form class="form-inline" action="/login" method="post">
+        <label>Username</label><br>
+        <input type="text" name="username" value="" class="form-control"><br>
+        <label>Password</label><br>
+        <input type="password" name="password" value="" class="form-control"><br>
+        <br>
+        <button type="submit" name="button" class="btn btn-info"><span class="glyphicon glyphicon-send"></span> &nbsp; Login</button>
+      </form>
+    </div>
+  </body>
+</html>
