@@ -4,6 +4,10 @@
     "password": "dolanan",
     "database": "basic-sequelize",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "logging": false
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
   }
 }

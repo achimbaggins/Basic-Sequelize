@@ -67,7 +67,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/edit/:id', (req, res) => {
-  if(req.params.id == 11){
+  if(req.params.id == 1){
     res.redirect('/users')
   } else {
     db.User.findAll({
@@ -82,7 +82,7 @@ router.get('/edit/:id', (req, res) => {
 })
 
 router.post('/edit/:id', (req, res) => {
-  if(req.params.id == 11){
+  if(req.params.id == 1){
     res.redirect('/users')
   } else {
     let sec = req.body.secret
@@ -103,7 +103,7 @@ router.post('/edit/:id', (req, res) => {
 })
 
 router.get('/delete/:id', (req, res) => {
-  if(req.params.id == 11){
+  if(req.params.id == 1){
     res.redirect('/users')
   } else {
 

@@ -26,6 +26,6 @@ app.use('/subjects', subjects)
 app.use('/teachers', teachers)
 app.use('/users', users)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Lagi dengerin kamu di Jendela 3000');
 })
