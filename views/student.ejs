@@ -50,7 +50,7 @@
                     <span class="glyphicon glyphicon-edit"></span> Edit
                   <!-- </button> -->
                 </a>
-                <a href="/students/delete/<%= data.id %>">
+                <a href="/students/delete/<%= data.id %>" onclick="return confirm('Yakin mau delete Siswa: \n<%= data.first_name + ' ' + data.last_name  %>?\n\n Klik cancel untuk membatalkan')">
                   <!-- <button type="button" name="button" class="btn btn-danger"> -->
                     <span class="glyphicon glyphicon-trash"></span> Delete
                   <!-- </button> -->

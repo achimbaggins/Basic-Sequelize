@@ -5,7 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     last_name: DataTypes.STRING,
     email: {
       type: DataTypes.STRING,
-      unique: {args: true, msg: 'Email sudah digunakan!!!'},
+      isUnique: {
+        args: true,
+        msg: 'Email sudah digunakan!!!'
+      },
       validate: {
         isEmail: {msg: 'Format Email Salah, atau Sudah digunakan!!!'},
         // isUnique: isUnique('email')

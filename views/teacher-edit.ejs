@@ -22,7 +22,13 @@
         <label>Subject</label><br>
         <select class="form-control" name="SubjectId">
           <% dataSubject.forEach( subject => { %>
-            <option value="<%= subject.id %>"><%= subject.subject_name %></option>
+            <%
+              let selected = ''
+              if(data.SubjectId == subject.id){
+                selected = 'selected'
+              }
+            %>
+            <option value="<%= subject.id %>" <%= selected %>><%= subject.subject_name %></option>
           <% }) %>
         </select>
         <br><br>
