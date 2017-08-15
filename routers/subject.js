@@ -73,7 +73,16 @@ router.get('/delete/:id', (req, res) => {
       }
     })
     .then( () => {
-      res.redirect('/subjects')
+      db.Teacher.update({
+        SubjectId: null
+      },{
+        where: {
+          SubjectId: req.params.id
+        }
+      })
+      .then(()=>{
+        res.redirect('/subjects')
+      })
     })
   })
 })
@@ -91,8 +100,7 @@ router.get('/:id/enrolledstudents', (req, res) => {
     for(let i = 0; i < result.length; i++){
       scoreArr.push(result[i].score)
     }
-    // console.log(scoreArr + '==================================');
-    // res.send(descScore(scoreArr))
+    // res.send(result)
     res.render('enrolled-students', {enrolled_data: result, nilai: descScore(scoreArr)})
   })
 })

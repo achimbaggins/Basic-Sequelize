@@ -3,20 +3,20 @@
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Users', [{
-      username: 'kepalasekolah',
-      password: 'achim',
+      username: 'achim',
+      password: '68ba831b00d873d5602da2d9308c520f3ca8549b7d5519c6021a848905e2',
       role: 'administrator'
     },{
       username: 'akademik',
-      password: 'achim',
+      password: '68ba831b00d873d5602da2d9308c520f3ca8549b7d5519c6021a848905e2',
       role: 'akademik'
     },{
       username: 'guru1',
-      password: 'achim',
+      password: '68ba831b00d873d5602da2d9308c520f3ca8549b7d5519c6021a848905e2',
       role: 'guru'
     },{
       username: 'guru2',
-      password: 'achim',
+      password: '68ba831b00d873d5602da2d9308c520f3ca8549b7d5519c6021a848905e2',
       role: 'guru'
     }], {});
   },

@@ -9,41 +9,45 @@
     <%- include part/menu %>
 
     <div class="col-md-6 col-md-offset-3">
-      <h1 class="text-center"><%= enrolled_data[0].Subject.subject_name %></h1>
+      <% if(enrolled_data.length == 0){ %>
+        Belum ada siswa terdaftar, masukkan siswa ke subject. Jika sudah silahkan kembali ke halaman ini.
+      <% } else { %>
+        <h1 class="text-center"><%= enrolled_data[0].Subject.subject_name %></h1>
 
 
-          <table class="table table-striped table-hover">
-            <thead>
-              <th class="text-center">No</th>
-              <th>Students Name</th>
-              <th class="text-center">Score</th>
-              <th class="text-center">Desc</th>
-            </thead>
-            <% var i = 1; enrolled_data.forEach(getData => { %>
-              <tr>
-                <td class="text-center">
-                  <%= i++ %>
-                </td>
-                <td>
-                  <%= getData.Student.first_name + ' ' + getData.Student.last_name %>
-                </td>
-                <td class="text-center">
-                  <% if(getData.score == undefined){%>
-                    <a href="/subjects/<%= getData.Subject.id %>/<%= getData.Student.id %>/give-score">
-                      <button type="button" name="button" class="btn btn-primary">Give Score</button>
-                    </a>
-                  <% } else { %>
-                    <%= getData.score %>
-                  <%}%>
-                </td>
-                <td class="text-center">
-                  <%= nilai[i-2] %>
-                </td>
-              </tr>
+            <table class="table table-striped table-hover">
+              <thead>
+                <th class="text-center">No</th>
+                <th>Students Name</th>
+                <th class="text-center">Score</th>
+                <th class="text-center">Desc</th>
+              </thead>
+              <% var i = 1; enrolled_data.forEach(getData => { %>
+                <tr>
+                  <td class="text-center">
+                    <%= i++ %>
+                  </td>
+                  <td>
+                    <%= getData.Student.first_name + ' ' + getData.Student.last_name %>
+                  </td>
+                  <td class="text-center">
+                    <% if(getData.score == undefined){%>
+                      <a href="/subjects/<%= getData.Subject.id %>/<%= getData.Student.id %>/give-score">
+                        <button type="button" name="button" class="btn btn-primary">Give Score</button>
+                      </a>
+                    <% } else { %>
+                      <%= getData.score %>
+                    <%}%>
+                  </td>
+                  <td class="text-center">
+                    <%= nilai[i-2] %>
+                  </td>
+                </tr>
 
-            <% }) %>
+              <% }) %>
 
-          </table>
+            </table>
+      <% } %>
     </div>
   </body>
 </html>

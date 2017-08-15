@@ -22,38 +22,48 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  db.User.findAll({
-    where: {
-      username: req.body.username
-    }
-  })
-  .then(result => {
-    if(result.length == 0){
-      db.User.create({
-        username: req.body.username,
-        password: req.body.password,
-        role: req.body.role
-      })
-      .then( () => {
-        res.redirect('/users')
-      })
-    } else {
+  // res.send(req.body)
+  if(req.body.username === "" || req.body.password === ""){
+    db.User.findAll({
+      order: [['role', 'ASC']]
+    })
+    .then(dataUser => {
+      res.render('user', {dataUser: dataUser, pesan: 'Username dan Password tidak boleh kosong!'})
+    })
+  } else {
+    db.User.findAll({
+      where: {
+        username: req.body.username
+      }
+    })
+    .then(result => {
+      if(result.length == 0){
+        db.User.create({
+          username: req.body.username,
+          password: req.body.password,
+          role: req.body.role
+        })
+        .then( () => {
+          res.redirect('/users')
+        })
+      } else {
+        db.User.findAll({
+          order: [['role', 'ASC']]
+        })
+        .then(dataUser => {
+        res.render('user', {dataUser: dataUser, pesan: 'Username sudah terdaftar, coba yang lain!'})
+        })
+      }
+    })
+    .catch( () => {
       db.User.findAll({
         order: [['role', 'ASC']]
       })
       .then(dataUser => {
       res.render('user', {dataUser: dataUser, pesan: 'Username sudah terdaftar, coba yang lain!'})
       })
-    }
-  })
-  .catch( () => {
-    db.User.findAll({
-      order: [['role', 'ASC']]
     })
-    .then(dataUser => {
-    res.render('user', {dataUser: dataUser, pesan: 'Username sudah terdaftar, coba yang lain!'})
-    })
-  })
+  }
 })
 
 router.get('/edit/:id', (req, res) => {
