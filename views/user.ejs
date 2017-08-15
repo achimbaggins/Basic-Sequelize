@@ -59,7 +59,8 @@
                   <a href="/users/edit/<%= d.id %>" title="Edit">
                       <span class="glyphicon glyphicon-edit"></span>
                   </a>
-                  <a href="/users/delete/<%= d.id %>" title="Delete">
+
+                  <a href="/users/delete/<%= d.id %>" title="Delete" onclick="return confirm('Kamu yakin mau menghapus?\nUser: <%= d.username %>\nRole: <%= d.role %>\n\nUntuk membatalkan klik Cancel')">
                       <span class="glyphicon glyphicon-trash"></span>
                   </a>
                   <%}%>
